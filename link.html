@@ -306,15 +306,13 @@
 </footer>
 
 <style>
-/* Ko-fi overlay widget: 黒背景を消して透過に寄せる */
-.floatingchat-container-wrap,
-.floatingchat-container-wrap-mobi,
-.floating-chat-kofi-popup-iframe,
-.floating-chat-kofi-popup-iframe-mobi,
-.floating-chat-kofi-popup-iframe-closer-mobi,
-iframe[id^="kofi-wo-container"] {
-  background: transparent !important;
-  background-color: transparent !important;
+@media (prefers-color-scheme: dark) {
+  /* Ko-fi overlay widget の iframe を狙う */
+  iframe#kofi-wo-container,
+  iframe[src*="ko-fi.com"] {
+    color-scheme: light !important;
+    background: transparent !important;
+  }
 }
 </style>
 <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
