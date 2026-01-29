@@ -305,16 +305,20 @@
 </nav><br><br>
 </footer>
 
-<style>
-@media (prefers-color-scheme: dark) {
-  /* Ko-fi overlay widget の iframe を狙う */
-  iframe#kofi-wo-container,
-  iframe[src*="ko-fi.com"] {
-    color-scheme: light !important;
-    background: transparent !important;
-  }
-}
-</style>
+<script>
+(() => {
+  const apply = () => {
+    const ifr = document.querySelector('iframe#kofi-wo-container, iframe[src*="ko-fi.com"]');
+    if (!ifr) return;
+    ifr.style.background = 'transparent';
+    ifr.style.colorScheme = 'light';
+  };
+
+  apply();
+  new MutationObserver(apply).observe(document.documentElement, { childList: true, subtree: true });
+})();
+</script>
+
 <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
 <script>
 kofiWidgetOverlay.draw('cobbitria', {
