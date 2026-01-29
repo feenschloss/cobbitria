@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Noto+Sans+JP:wght@300;700&display=swap" rel="stylesheet">
+  <title>Cobbitria Link</title>
+  <style>
+    :root{
+      --bg:#FFF;
+      --fg:#333;
+      --line:#333;
+      --fs:12px;
+      --fss:10px;
+      --w:400px;
+      --r:14px;
+      --gap:16px;
+      --en: Montserrat;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--fg);
+      font:var(--fs)/1.9 "Noto Sans JP",sans-serif;
+      display:grid;
+      grid-template-rows:auto 1fr auto;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    p{ margin:0; }
+    img{ display:block; }
+
+    h3, .card, .stories-announce, footer {
+    font-family: var(--en);
+}
+    .container{
+      width:min(90vw, var(--w));
+      margin:0 auto;
+    }
+
+    /* 汎用・追加クラス */
+    .ss{ font-size: 10px; }
+    
+    .spacing {
+      letter-spacing: 2px;
+    }
+
+    .follow-msg {
+      margin: 36px;
+      text-align: center;
+    }
+
+    h3{
+      margin:0;
+      font-size: 12px;
+      font-weight: inherit;
+      line-height: inherit;
+      padding-bottom: 24px;
+      text-align: left;
+      letter-spacing: 6px;
+    }
+
+    /* Header */
+    header{
+      border-bottom:1px dashed #AAA;
+      overflow:hidden;
+      height: clamp(220px, 28vh, 280px);
+    }
+    header img{ width:100%; height:100%; object-fit:cover; }
+
+    /* Main */
+    main{
+      padding:0 0 28px;
+      display:flex;
+      flex-direction:column;
+      gap:26px;
+    }
+    main > section{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:var(--gap);
+      margin-bottom: 60px;
+    }
+
+    .avatar{
+      width:72px;
+      aspect-ratio:1 / 1;
+      margin-top:-36px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:4px;
+      background:var(--bg);
+      object-fit:cover;
+      position:relative;
+      z-index:2;
+    }
+
+    .row{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+    }
+
+    .icon{
+      width:44px; height:44px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      display:grid; place-items:center;
+    }
+    .icon img{ width:100%; height:100%; object-fit:contain; }
+
+    .iconstore{
+      width:60px; height:60px;
+      display:grid; place-items:center;
+    }
+    .iconstore img{ width:100%; height:100%; object-fit:contain; }
+
+    /* link card */
+    .card{
+      width:min(300px, 100%);
+      height:100px;
+      border:1px solid #777;
+      border-radius:var(--r);
+      overflow:hidden;
+      letter-spacing: 1px;
+      position:relative;
+    }
+    .card-bg{ width:100%; height:100%; object-fit:cover; }
+    .card-label{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      padding:0 18px;
+      color:#fff;
+      background:rgba(131,137,199,.2);
+      text-shadow:0 2.2px 0 rgba(29,53,95,.4);
+      z-index:1;
+    }
+    .card-badge{
+      position:absolute;
+      top:12px; right:12px;
+      width:40px; height:40px;
+      object-fit:contain; opacity:.85;
+      z-index:2; pointer-events:none;
+    }
+    .card-badge-note{
+      position:absolute;
+      top:8px; right:-2px;
+      width:45%; height:45%;
+      object-fit:contain; opacity:.85;
+      z-index:2; pointer-events:none;
+    }
+   
+    .hako{
+      width:min(280px, 100%);
+      border-radius:var(--r);
+      padding:16px 22px;
+      background:rgba(131,137,199,.05);
+      line-height:1.8;
+      text-align: left;
+    }
+    .hako p:first-child {
+      font-weight: 600;
+      font-family: Montserrat;
+      padding-bottom: 3px;
+      margin-bottom: 8px;
+      border-bottom: dashed 1px #999;
+    }
+
+    .stories-announce {
+      margin-top: -8px;
+      text-align: right;
+      padding-right: 60px;
+      font-weight: 600;
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+
+    .kofi{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      white-space:nowrap;
+    }
+    .kofi img{ width:52px; height:auto; }
+
+    .balloon {
+      position: relative;
+      margin: 2em 0 1em 40px;
+      bottom: 50px;
+      padding: 15px;
+      background: #fcbf47;
+      color: #000;
+      border-radius: 30px;
+      text-align: center;
+    }
+    .balloon:before, .balloon:after {
+      content: "";
+      position: absolute;
+      background: #fcbf47;
+      border-radius: 50%;
+    }
+    .balloon:before { left: -38px; width: 10px; height: 9px; bottom: 0; }
+    .balloon:after { left: -24px; width: 16px; height: 14px; bottom: 4px; }
+
+    /* Footer */
+    footer {
+      width: 100%;
+      height: 250px;
+      background: url('assets/footer-hero.jpg') no-repeat center bottom / cover;
+      /* border-top: 1px dashed #AAA;*/
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #FFF;
+      text-shadow:2px 2.5px 0.5px rgba(29,53,95,.3);
+    }
+    .footer-brand {
+      letter-spacing: 5px;
+      padding-bottom: 4px;
+    }
+    footer nav {
+      display: flex;
+      gap: 10px;
+      font-size: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <header aria-label="Hero">
+    <img src="assets/hero.png" alt="" />
+  </header>
+
+  <main class="container">
+    <section aria-label="Top">
+      <img class="avatar" src="assets/avatar.png" alt="Avatar" />
+      <br>
+      <p class="spacing">読みものとコミュニティ</p>
+      <nav class="row">
+        <a class="icon" href="https://note.com/karacle"><img src="assets/icon-note_black.svg" alt="note" /></a>
+        <a class="icon" href="https://xfolio.jp/portfolio/Cobbitria"><img src="assets/icon-xfolio_black.png" alt="Xfolio" /></a>
+      </nav>
+    </section>
+
+    <h3>SHORT SHORT CAKE STORIES</h3>
+    <div class="stories-announce">STARTING in 2026SS - - ></div>
+    
+    <section>
+      <a class="card" href="https://www.instagram.com/cobbitria/" target="_blank">
+        <img class="card-bg" src="assets/card-world.png" alt="">
+        <span class="card-label">WORLD IMAGE JOURNAL</span>
+        <img class="card-badge" src="assets/ig.png" alt="" aria-hidden="true">
+      </a>
+      <a class="card" href="https://www.instagram.com/cobbitria/" target="_blank">
+        <img class="card-bg" src="assets/card-behind.png" alt="">
+        <span class="card-label">BEHIND the SCENES &amp; INFORMATION</span>
+        <img class="card-badge" src="assets/threads.png" alt="" aria-hidden="true">
+      </a>
+      <a class="card" href="https://www.instagram.com/cobbitria/" target="_blank">
+        <img class="card-bg" src="assets/card-note.png" alt="">
+        <span class="card-label">MOTSCHIZUKI SHORT SHORT CAKE STORIES</span>
+        <img class="card-badge-note" src="assets/note-white.svg" alt="" aria-hidden="true">
+      </a>
+      <p class="follow-msg">フォローしておいてくださいね =ↀωↀ=</p>
+
+      <div class="hako">
+        <p>@hatze1022.bsky.social@bsky.brid.gy</p>
+        <p>{ Bridgy Fed 済 }<br />ActivityPub系《Misskey,mastodon etc》で｢🔍 ユーザー照会」からフォローできます</p>
+      </div>
+    </section>
+
+    <h3>STORE</h3>
+    <section>
+      <nav class="row">
+        <a class="iconstore" href="https://xfolio.jp/portfolio/Cobbitria/shop" target="_blank"><img src="assets/store-xfolio_b.png" alt="Xfolio支店" /></a>
+        <a class="iconstore" href="https://www.creema.jp/c/feenschloss/item/onsale" target="_blank"><img src="assets/store-creema_b.png" alt="Creema支店" /></a>
+      </nav>
+    </section>
+
+    <h3>SUPPORT</h3>
+    <section>
+      <a class="kofi" href="https://ko-fi.com/cobbitria" target="_blank">
+        <div><img src="assets/icon-kofi.webp" alt=""/></div>
+        <div class="balloon"><p>コーヒーご馳走しちゃう<br><span class="ss">- 会員登録不要です -</span></p></div>
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <p class="footer-brand">COBBITRIA</p>
+    <nav>
+      <a href="https://cobbitria.net/">ENGLISH</a> / <a href="https://cobbitria.net/jpn">JAPANESE</a>
+    </nav><br><br>
+  </footer>
+
+  <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+  <script>
+    kofiWidgetOverlay.draw('cobbitria', {
+      'type': 'floating-chat',
+      'floating-chat.donateButton.text': 'Support me',
+      'floating-chat.donateButton.background-color': '#fcbf47',
+      'floating-chat.donateButton.text-color': '#323842'
+    });
+  </script>
+</body>
+</html>
