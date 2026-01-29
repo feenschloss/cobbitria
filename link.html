@@ -314,5 +314,17 @@ kofiWidgetOverlay.draw('cobbitria', {
 'floating-chat.donateButton.text-color': '#323842'
 });
 </script>
+<style>
+/* Ko-fi overlay widget: 黒背景を消して透過に寄せる */
+.floatingchat-container-wrap,
+.floatingchat-container-wrap-mobi,
+.floating-chat-kofi-popup-iframe,
+.floating-chat-kofi-popup-iframe-mobi,
+.floating-chat-kofi-popup-iframe-closer-mobi,
+iframe[id^="kofi-wo-container"] {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+</style>
 </body>
 </html>
